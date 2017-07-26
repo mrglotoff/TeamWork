@@ -13,7 +13,7 @@ class JsonParser {
         String jsonString = "{\"name\":\"Mahesh\", \"age\":21}";
 
         //map json to student
-
+//*//**
         try {
             Student student = mapper.readValue(jsonString, Student.class);
 
