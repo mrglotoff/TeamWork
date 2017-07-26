@@ -1,8 +1,14 @@
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Student {
     private String name;
     private int age;
 
-    public Student() {
+    @JsonCreator
+    public Student(@JsonProperty("name") String name, @JsonProperty("age") int age) {
+        this.name = name;
+        this.age = age;
     }
 
     public String getName() {
@@ -21,8 +27,5 @@ public class Student {
         this.age = age;
     }
 
-    public String toString() {
-        return "Student [ name: " + name + ", age: " + age + " ]";
-    }
-}
 
+}
