@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class JacksonUsage {
@@ -26,5 +27,36 @@ public class JacksonUsage {
                 ", Course: " + students.get(0).getCourse());
         System.out.println("Student: " + students.get(1).getName() + ", Age: " + students.get(1).getAge() +
                 ", Course: " + students.get(1).getCourse());
+        
+        SortAndOutputStudents(students);
+    }
+    
+    public static void SortAndOutputStudents(List<StudentDto> students){
+    	//before sort
+    	System.out.println();
+    	System.out.println("List is not sorted");
+      	for(StudentDto student: students){
+      		System.out.println("Student: " + student.getName() + ", Age: " + student.getAge()+
+      	            ", Course: " + student.getCourse());
+      	}
+        
+        Collections.sort(students);
+        
+        System.out.println();
+        System.out.println("List is sorted by dafault (Name then Age)");
+      	for(StudentDto student: students){
+      		System.out.println("Student: " + student.getName() + ", Age: " + student.getAge()+
+      	            ", Course: " + student.getCourse());
+      	}
+      	
+      	Collections.sort(students, StudentDto.CourseNameComparator);
+      	
+      	System.out.println();
+      	System.out.println("List is sorted by Course then default sorting");
+      	for(StudentDto student: students){
+      		System.out.println("Student: " + student.getName() + ", Age: " + student.getAge()+
+      	            ", Course: " + student.getCourse());
+      	}
+
     }
 }
