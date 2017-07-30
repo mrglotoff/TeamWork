@@ -59,5 +59,17 @@
       "name": "Latoya Walker",
       "course": 5,
       "age": 26
+    },
+    {
+      "id": 11,
+      "name": "Lori Hunter",
+      "course": 5,
+      "age": 24
+    },
+    {
+      "id": 12,
+      "name": "Clara Roberson",
+      "course": 2,
+      "age": 21
     }
 ]
