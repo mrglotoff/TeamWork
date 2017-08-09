@@ -13,7 +13,7 @@ import java.util.List;
 
 public class JacksonUsage {
 
-    public static final String INPUT_FILE = "src/students.json";
+    private static final String INPUT_FILE = "src/students.json";
 
     public static void main(String[] args) {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -23,11 +23,6 @@ public class JacksonUsage {
         try {
             InputStream input = new FileInputStream(INPUT_FILE);
             List<StudentDto> students = objectMapper.readValue(input, typeFactory.constructCollectionType(ArrayList.class, StudentDto.class));
-
-            System.out.println("Student: " + students.get(0).getName() + ", Age: " + students.get(0).getAge() +
-                    ", Course: " + students.get(0).getCourse());
-            System.out.println("Student: " + students.get(1).getName() + ", Age: " + students.get(1).getAge() +
-                    ", Course: " + students.get(1).getCourse());
 
             SortAndOutputStudents(students);
         } catch (FileNotFoundException ex) {
@@ -39,7 +34,7 @@ public class JacksonUsage {
         }
     }
 
-    public static void SortAndOutputStudents(List<StudentDto> students) {
+    private static void SortAndOutputStudents(List<StudentDto> students) {
         //before sort
         System.out.println();
         System.out.println("List is not sorted");
@@ -57,7 +52,7 @@ public class JacksonUsage {
                     ", Course: " + student.getCourse());
         }
 
-        Collections.sort(students, StudentDto.CourseNameComparator);
+        students.sort(StudentDto.CourseNameComparator);
 
         System.out.println();
         System.out.println("List is sorted by Course then default sorting");
